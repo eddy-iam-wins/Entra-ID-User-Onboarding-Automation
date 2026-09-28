@@ -1,0 +1,6 @@
+DisplayName,UserPrincipalName,Department,JobTitle,Groups,Status
+Andrew Smith,andrew.smith@tenant.onmicrosoft.com,IT,IT Support Analyst,"All Employees, IT Team",Already Exists
+Bryce Johnson,bryce.johnson@tenant.onmicrosoft.com,HR,HR Coordinator,"All Employees, HR Team",Already Exists
+Carter Williams,carter.williams@tenant.onmicrosoft.com,Finance,Financial Analyst,"All Employees, Finance Team",Already Exists
+David Brown,david.brown@tenant.onmicrosoft.com,Sales,Sales Representative,"All Employees, Sales Team",Already Exists
+Erica Fulton,erica.fulton@tenant.onmicrosoft.com,Engineering,Software Engineer,"All Employees, Engineering Team",Already Exists

@@ -1,0 +1,6 @@
+FirstName,LastName,Department,JobTitle,ManagerUPN,StartDate,LicenseType,Location
+Andrew,Smith,IT,IT Support Analyst,,2026-10-05,Microsoft 365 E3,Chicago
+Bryce,Johnson,HR,HR Coordinator,,2026-10-06,Microsoft 365 E3,New York City
+Carter,Williams,Finance,Financial Analyst,,2026-10-07,Microsoft 365 E3,Los Angeles
+David,Brown,Sales,Sales Representative,,2026-10-08,Microsoft 365 E3,Phoenix
+Erica,Fulton,Engineering,Software Engineer,,2026-10-09,Microsoft 365 E3,Denver

@@ -1,0 +1,14 @@
+# Ignore temporary or sensitive files
+
+*.log
+*.tmp
+*.bak
+
+# Ignore credential or secret files
+*.txt
+*.secret
+*.password
+*.credentials
+
+# Ignore PowerShell history
+ConsoleHost_history.txt
