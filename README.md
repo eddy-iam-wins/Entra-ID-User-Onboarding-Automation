@@ -674,6 +674,9 @@ Sample HR CSV (Screenshots/03-Sample-HR-CSV.png)
 <img width="738" height="175" alt="03-Sample-HR-CSV" src="https://github.com/user-attachments/assets/70c9e51d-6374-491a-8f42-bef94af1250f" />
 
 
+Sample-Data/NewHires.csv
+
+<img width="491" height="145" alt="Screenshot 2026-09-30 134258" src="https://github.com/user-attachments/assets/2836ed52-288e-4f3b-8970-92986a75a5af" />
 
 
 
@@ -1795,6 +1798,9 @@ Final Onboarding Report (Screenshots/22-Final-Onboarding-Report.png)
 
 <img width="1321" height="307" alt="22-Final-Onboarding-Report" src="https://github.com/user-attachments/assets/c59111bc-3bca-4f29-a5d3-1519625d3291" />
 
+Reports/Onboarding-Report.csv 
+
+<img width="561" height="142" alt="Screenshot 2026-09-30 134741" src="https://github.com/user-attachments/assets/1406e558-a8ec-4783-9246-2b8df99c0c0c" />
 
 
 
