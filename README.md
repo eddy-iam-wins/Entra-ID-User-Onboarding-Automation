@@ -384,21 +384,9 @@ The lab authenticated using delegated Microsoft Graph permissions:
 
 
 ```powershell
-
-
-
 Connect-MgGraph -Scopes "User.ReadWrite.All","Group.ReadWrite.All","Directory.ReadWrite.All"
 
-
-
-
-
-
-
 Get-MgContext
-
-
-
 ```
 
 
