@@ -146,117 +146,33 @@ The onboarding process follows this workflow:
 
 
 HR New-Hire CSV
-
-
-
      │
-
-
-
      ▼
-
-
-
 CSV Import \& Validation
-
-
-
      │
-
-
-
      ▼
-
-
-
 User Identity Preparation
-
-
-
      │
-
-
-
      ▼
-
-
-
 Check Existing Entra ID User
-
-
-
      │
-
-
-
      ├── User Exists ──────► Skip Creation
-
-
-
      │
-
-
-
      └── User Does Not Exist
-
-
-
                │
-
-
-
                ▼
-
-
-
         Create Entra ID User
-
-
-
                │
-
-
-
                ▼
-
-
-
       Assign All Employees Group
-
-
-
                │
-
-
-
                ▼
-
-
-
        Assign Department Group
-
-
-
                │
-
-
-
                ▼
-
-
-
           Generate Report
-
-
-
                │
-
-
-
                ▼
-
-
-
           Verify Results
 
 
@@ -545,61 +461,20 @@ Groups were created using Microsoft Graph PowerShell.
 
 
 ```powershell
-
-
-
 New-MgGroup `
-
-
-
   -DisplayName "All Employees" `
-
-
-
   -MailEnabled:$false `
-
-
-
   -MailNickname "AllEmployees" `
-
-
-
   -SecurityEnabled:$true `
-
-
-
   -Description "Baseline group for all employees"
 
-
-
-
-
-
-
 New-MgGroup `
 
-
-
   -DisplayName "IT Team" `
-
-
-
   -MailEnabled:$false `
-
-
-
   -MailNickname "ITTeam" `
-
-
-
   -SecurityEnabled:$true `
-
-
-
   -Description "Security group for IT employees"
-
-
-
 ```
 
 
@@ -700,81 +575,24 @@ PowerShell
 
 
 ```powershell
-
-
-
 $NewHires = Import-Csv "Sample-Data\\\\NewHires.csv"
 
-
-
-
-
-
-
 $RequiredFields = @(
-
-
-
   "FirstName",
-
-
-
   "LastName",
-
-
-
   "Department",
-
-
-
   "JobTitle",
-
-
-
   "City",
-
-
-
   "UsageLocation"
-
-
-
 )
 
-
-
-
-
-
-
 foreach ($Field in $RequiredFields) {
-
-
-
   if ($Field -notin $NewHires\\\[0].PSObject.Properties.Name) {
-
-
-
       throw "Required field '$Field' is missing from the CSV."
-
-
-
   }
-
-
-
 }
 
-
-
-
-
-
-
 $NewHires | Format-Table
-
-
-
 ```
 
 
@@ -839,37 +657,13 @@ The department-to-group mapping was defined in PowerShell using a hashtable.
 
 
 ```powershell
-
-
-
 $DepartmentGroupMap = @{
-
-
-
   "IT"          = "IT Team"
-
-
-
   "HR"          = "HR Team"
-
-
-
   "Finance"     = "Finance Team"
-
-
-
   "Sales"       = "Sales Team"
-
-
-
   "Engineering" = "Engineering Team"
-
-
-
 }
-
-
-
 ```
 
 
@@ -922,33 +716,12 @@ The user's UPN was prepared using PowerShell and the tenant's default Entra doma
 
 
 ```powershell
-
-
-
 $DefaultDomain = (Get-MgDomain | Where-Object {$\\\_.IsDefault -eq $true}).Id
-
-
-
-
-
-
 
 $UserPrincipalName = "$($Employee.FirstName).$($Employee.LastName)@$DefaultDomain".ToLower()
 
-
-
-
-
-
-
 $ExistingUser = Get-MgUser `
-
-
-
-  -Filter "userPrincipalName eq '$UserPrincipalName'"
-
-
-
+  -Filer "userPrincipalName eq '$UserPrincipalName'"
 ```
 
 
@@ -993,57 +766,18 @@ The test user was created using Microsoft Graph PowerShell.
 
 
 ```powershell
-
-
-
 New-MgUser `
-
-
-
   -DisplayName $DisplayName `
-
-
-
   -GivenName $FirstName `
-
-
-
   -Surname $LastName `
-
-
-
   -UserPrincipalName $UserPrincipalName `
-
-
-
   -MailNickname $MailNickname `
-
-
-
   -AccountEnabled:$true `
-
-
-
   -PasswordProfile $PasswordProfile `
-
-
-
   -Department $Department `
-
-
-
   -JobTitle $JobTitle `
-
-
-
   -City $City `
-
-
-
   -UsageLocation "US"
-
-
-
 ```
 
 
@@ -1092,49 +826,16 @@ The test user was added to security groups using Microsoft Graph PowerShell.
 
 
 ```powershell
-
-
-
 New-MgGroupMemberByRef `
-
-
-
   -GroupId $AllEmployeesGroupId `
-
-
-
   -BodyParameter @{
-
-
-
       "@odata.id" = "https://graph.microsoft.com/v1.0/directoryObjects/$TestUserId"
-
-
-
   }
 
-
-
-
-
-
-
 New-MgGroupMemberByRef `
-
-
-
   -GroupId $DepartmentGroupId `
-
-
-
   -BodyParameter @{
-
-
-
       "@odata.id" = "https://graph.microsoft.com/v1.0/directoryObjects/$TestUserId"
-
-
-
   }
 
 
@@ -1269,121 +970,34 @@ The following example shows the core user provisioning logic:
 
 
 ```powershell
-
-
-
 foreach ($Employee in $NewHires) {
 
-
-
-
-
-
-
   # Generate the user's UPN
-
-
-
   $UserPrincipalName = "$($Employee.FirstName).$($Employee.LastName)@$DefaultDomain".ToLower()
 
-
-
-
-
-
-
   # Check whether the user already exists
-
-
-
   $ExistingUser = Get-MgUser `
-
-
-
       -Filter "userPrincipalName eq '$UserPrincipalName'"
 
-
-
-
-
-
-
   if ($ExistingUser) {
-
-
-
       # Existing users are not recreated
-
-
-
       continue
-
-
-
   }
 
-
-
-
-
-
-
   # Create the new Entra ID user
-
-
-
   $NewUser = New-MgUser `
-
-
-
       -DisplayName "$($Employee.FirstName) $($Employee.LastName)" `
-
-
-
       -GivenName $Employee.FirstName `
-
-
-
       -Surname $Employee.LastName `
-
-
-
       -UserPrincipalName $UserPrincipalName `
-
-
-
       -MailNickname "$($Employee.FirstName).$($Employee.LastName)" `
-
-
-
       -AccountEnabled:$true `
-
-
-
       -PasswordProfile $PasswordProfile `
-
-
-
       -Department $Employee.Department `
-
-
-
       -JobTitle $Employee.JobTitle `
-
-
-
       -City $Employee.City `
-
-
-
       -UsageLocation $Employee.UsageLocation
-
-
-
 }
-
-
-
 ```
 
 
@@ -1592,57 +1206,19 @@ The updated automation follows a controlled sequence:
 
 
 Check Existing User
-
-
-
      │
-
-
-
      ▼
-
-
-
 Create User
-
-
-
      │
-
-
-
  ┌───┴───┐
 
-
-
 Success   Failure
-
-
-
  │         │
-
-
-
  ▼         ▼
-
-
-
 Assign     Record
-
-
-
 Groups     Failure
-
-
-
  │
-
-
-
  ▼
-
-
-
 Generate Report
 
 
@@ -1700,49 +1276,16 @@ The automation prevents this by checking the user's UPN before attempting accoun
 
 
 ```powershell
-
-
-
 $ExistingUser = Get-MgUser `
-
-
-
   -Filter "userPrincipalName eq '$UserPrincipalName'"
 
-
-
-
-
-
-
 if ($ExistingUser) {
-
-
-
-  # User already exists
-
-
-
+  #User already exists
   $Status = "Already Exists"
-
-
-
 }
-
-
-
 else {
-
-
-
   # Create new user
-
-
-
 }
-
-
-
 ```
 
 
@@ -1889,8 +1432,6 @@ Temporary passwords were generated in memory during the onboarding process and w
 \* Written to the onboarding report
 
 \* Included in screenshots
-
-\* Included in the Word documentation
 
 \* Committed to GitHub
 
