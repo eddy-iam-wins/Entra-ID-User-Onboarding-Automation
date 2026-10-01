@@ -1087,7 +1087,7 @@ The password generation logic was updated to generate passwords containing the r
 
 
 
-Temporary passwords are generated in memory during the onboarding process and are not written to the HR CSV, onboarding report, screenshots, Word documentation, or GitHub repository.
+Temporary passwords are generated in memory during the onboarding process and are not written to the HR CSV, onboarding report, screenshots, or GitHub repository.
 
 
 
