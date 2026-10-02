@@ -390,11 +390,6 @@ Get-MgContext
 ```
 
 
-
-The complete authentication code is available in the \[`Scripts`](Scripts/) directory.
-
-
-
 > **Production consideration:** These permissions are broader than would normally be preferred for production automation. A production implementation should follow least-privilege principles and use appropriate identity, credential, and monitoring controls.
 
 
