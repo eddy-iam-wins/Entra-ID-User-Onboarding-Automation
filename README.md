@@ -1650,6 +1650,29 @@ The same automation principles used for onboarding could be extended to other id
 \* Access removal
 
 
+## Final Validation – Additional New Hires
 
+To further validate the onboarding automation, I added five additional fictional employees to the `NewHires.csv` file.
 
+The updated CSV was validated in PowerShell before running the automation again. The full onboarding script was then executed against the expanded dataset.
+
+The automation successfully:
+
+- Validated the additional HR data
+- Created the five new Entra ID user accounts
+- Added each user to the `All Employees` group
+- Assigned each user to the appropriate department security group
+- Generated the onboarding results
+- Verified the new users and group memberships directly in Microsoft Entra ID
+
+Screenshots were captured throughout the process to document the CSV validation, successful user provisioning, group assignments, and final verification.
+
+This additional test demonstrated that the automation can process new employees added to the HR dataset and consistently apply the expected identity and access assignments.
+
+<img width="901" height="461" alt="rerun 1" src="https://github.com/user-attachments/assets/e7af472e-d79c-4c8d-8168-a1a037a619a4" />
+<img width="987" height="351" alt="rerun 2" src="https://github.com/user-attachments/assets/c9f7ff0c-09c4-43b6-ab86-aedd0efe21e5" />
+<img width="1165" height="1003" alt="rerun 3" src="https://github.com/user-attachments/assets/0e44f03d-602c-47b8-98f3-f092901fb396" />
+<img width="850" height="163" alt="rerun 4" src="https://github.com/user-attachments/assets/af9b0d58-e88e-4b03-b088-a03d0694b8dc" />
+<img width="1039" height="468" alt="rerun 5" src="https://github.com/user-attachments/assets/353600e2-23a4-49f3-9b72-069404c5cfa0" />
+<img width="1912" height="829" alt="rerun 6" src="https://github.com/user-attachments/assets/a218e3de-b4c6-48f9-9cd0-217b538ea5f8" />
 
