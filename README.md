@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/32868517/README.md)
 # Entra ID User Onboarding Automation
 
 
