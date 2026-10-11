@@ -1,5 +1,5 @@
 [README.md](https://github.com/user-attachments/files/32868517/README.md)
-## **Entra ID User Onboarding Automation**
+# Entra ID User Onboarding Automation
 
 
 
@@ -7,7 +7,7 @@
 
 
 
-##### **Project Overview**
+## Project Overview
 
 
 
@@ -31,7 +31,7 @@ This is a hands-on IAM lab using fictional data.
 
 
 
-##### **Business Problem**
+## Business Problem
 
 
 
@@ -48,10 +48,9 @@ This project demonstrates how these repetitive provisioning tasks can be standar
 
 
 
+ 
 
-##### 
-
-##### **Solution**
+## Solution
 
 
 
@@ -87,7 +86,7 @@ The result is a repeatable onboarding workflow that reduces manual administratio
 
 ##### 
 
-##### **Business Impact**
+## Business Impact
 
 
 
@@ -133,7 +132,7 @@ This is a lab simulation using fictional data. Production use would require addi
 
 ###### 
 
-###### **Architecture / Workflow**
+## Architecture / Workflow
 
 
 
@@ -181,7 +180,7 @@ Check Existing Entra ID User
 
 
 
-###### **Key Components**
+## Key Components
 
 
 
@@ -213,7 +212,7 @@ Onboarding Report: Records the outcome of each provisioning process.
 
 ###### 
 
-###### **Technologies Used**
+## Technologies Used
 
 
 
@@ -249,7 +248,7 @@ Windows 11 — Local development and testing environment
 
 
 
-###### **IAM Concepts Demonstrated**
+## IAM Concepts Demonstrated
 
 
 
@@ -307,7 +306,7 @@ Security Awareness — Protecting temporary credentials and recognizing the need
 
 
 
-###### **Implementation**
+## Implementation
 
 
 
